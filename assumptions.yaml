@@ -1,0 +1,72 @@
+project:
+  date_start: "2025-09-17"
+  date_end: "2025-12-16"
+
+accounting:
+  shipping_per_order: 8.50
+  merchant_fee_pct: 0.025
+
+definitions:
+  return_rate_basis: "gross_sales"     # gross_sales | net_sales
+  daily_orders_method: "sessions_x_conversion_scaled"
+  epsilon: 1e-9
+
+risk_regression:
+  use_log_transforms: true
+  lags_days: [7, 14, 21]
+forecast_q1:
+  baseline_method: q4_avg_daily
+  click_to_session_ratio: 1.0
+  organic_growth_pct:
+    Jan: 0.02
+    Feb: 0.02
+    Mar: 0.02
+  paid_sessions_growth_pct:
+    Jan: 0.00
+    Feb: 0.00
+    Mar: 0.00
+  conversion_rate_delta_pp:
+    Jan: 0.00
+    Feb: 0.00
+    Mar: 0.00
+  aov_gross_pct_change:
+    Jan: 0.00
+    Feb: 0.00
+    Mar: 0.00
+  return_rate_delta_pp:
+    Jan: 0.00
+    Feb: 0.00
+    Mar: 0.00
+  discount_rate_delta_pp:
+    Jan: 0.00
+    Feb: 0.00
+    Mar: 0.00
+  cogs_pct_delta_pp:
+    Jan: 0.00
+    Feb: 0.00
+    Mar: 0.00
+  ad_spend_pct_change:
+    Jan: 0.00
+    Feb: 0.00
+    Mar: 0.00
+  scenarios:
+    conservative:
+      organic_growth_pct: {Jan: -0.02, Feb: -0.02, Mar: -0.02}
+      paid_sessions_growth_pct: {Jan: -0.05, Feb: -0.05, Mar: -0.05}
+      ad_spend_pct_change: {Jan: -0.05, Feb: -0.05, Mar: -0.05}
+      conversion_rate_delta_pp: {Jan: -0.002, Feb: -0.002, Mar: -0.002}
+      aov_gross_pct_change: {Jan: -0.01, Feb: -0.01, Mar: -0.01}
+      return_rate_delta_pp: {Jan: 0.0, Feb: 0.0, Mar: 0.0}
+      cogs_pct_delta_pp: {Jan: 0.002, Feb: 0.002, Mar: 0.002}
+    base_return_fix:
+      return_rate_delta_pp: {Jan: -0.005, Feb: -0.005, Mar: -0.005}
+      cogs_pct_delta_pp: {Jan: -0.002, Feb: -0.002, Mar: -0.002}
+      discount_rate_delta_pp: {Jan: -0.001, Feb: -0.001, Mar: -0.001}
+    aggressive:
+      organic_growth_pct: {Jan: 0.05, Feb: 0.05, Mar: 0.05}
+      paid_sessions_growth_pct: {Jan: 0.1, Feb: 0.1, Mar: 0.1}
+      ad_spend_pct_change: {Jan: 0.1, Feb: 0.1, Mar: 0.1}
+      conversion_rate_delta_pp: {Jan: 0.003, Feb: 0.003, Mar: 0.003}
+      aov_gross_pct_change: {Jan: 0.02, Feb: 0.02, Mar: 0.02}
+      return_rate_delta_pp: {Jan: 0.0, Feb: 0.0, Mar: 0.0}
+      cogs_pct_delta_pp: {Jan: 0.0, Feb: 0.0, Mar: 0.0}
